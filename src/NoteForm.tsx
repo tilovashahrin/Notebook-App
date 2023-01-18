@@ -3,7 +3,7 @@ import { Button, Col, Form, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ReactSelectCreatable from 'react-select/creatable'
 
-export function NoteForm() {
+export function NoteForm({onSubmit}: NoteFormProps) {
     const titleRef = useRef<HTMLInputElement>(null)
     const textareaRef = useRef<HTMLTextAreaElement>(null)
 
