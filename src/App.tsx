@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { Container } from 'react-bootstrap'
 import { Routes, Route, Navigate } from "react-router-dom"
 import { NewNote } from './NewNote'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useLocalStorage } from './useLocalStorage'
 
 //includes id
 export type Note = {
@@ -37,6 +38,12 @@ export type RawNoteData = {
 function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", [])
   const [tags, setTags] = useLocalStorage<Tag[]>("TAGS", [])
+
+  const noteWithTag = useMemo(() => {
+    return notes.map(note => {
+      return { ...note, tags: tags.filter(tag => note.tagIds.includes(tag.id)) }
+    })
+  }, [notes, tags])
 
   return (
     <Container className="my-4">
