@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import { NewNote } from './NewNote'
 import { useMemo, useState } from 'react'
 import { useLocalStorage } from './useLocalStorage'
+import { v4 as uuidV4} from "uuid"
 
 //includes id
 export type Note = {
@@ -44,6 +45,12 @@ function App() {
       return { ...note, tags: tags.filter(tag => note.tagIds.includes(tag.id)) }
     })
   }, [notes, tags])
+
+  function onCreateNote({ tags, ...data}: NoteData) {
+    setNotes(prevNotes => {
+      return [...prevNotes, {...data, id: uuidV4(), tagIds: tags.map(tag => tag.id)}]
+    })
+  }
 
   return (
     <Container className="my-4">
