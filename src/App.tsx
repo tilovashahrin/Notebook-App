@@ -52,11 +52,15 @@ function App() {
     })
   }
 
+  function addTag(tag: Tag){
+
+  }
+
   return (
     <Container className="my-4">
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/new" element={<NewNote />} />
+        <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags}/>} />
         <Route path="*" element={<Navigate to="/" />} /> {/* route that does not exist */}
         <Route path="/:id">
           <Route index element={<h1>Show</h1>} />
