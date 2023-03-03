@@ -60,7 +60,7 @@ function App() {
   return (
     <Container className="my-4">
       <Routes>
-        <Route path="/" element={<NotesList availableTags={tags}/>} />
+        <Route path="/" element={<NotesList availableTags={tags} notes={noteWithTag}/>} />
         <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags}/>} />
         <Route path="*" element={<Navigate to="/" />} /> {/* route that does not exist */}
         <Route path="/:id">
