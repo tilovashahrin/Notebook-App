@@ -6,7 +6,8 @@ import { NewNote } from './NewNote'
 import { NotesList } from './NotesList'
 import { useMemo, useState } from 'react'
 import { useLocalStorage } from './useLocalStorage'
-import { v4 as uuidV4} from "uuid"
+import { v4 as uuidV4 } from "uuid"
+import { NoteLayout } from './NoteLayout'
 
 //includes id
 export type Note = {
@@ -47,23 +48,34 @@ function App() {
     })
   }, [notes, tags])
 
-  function onCreateNote({ tags, ...data}: NoteData) {
+  function onCreateNote({ tags, ...data }: NoteData) {
     setNotes(prevNotes => {
-      return [...prevNotes, {...data, id: uuidV4(), tagIds: tags.map(tag => tag.id)}]
+      return [...prevNotes, { ...data, id: uuidV4(), tagIds: tags.map(tag => tag.id) }]
     })
   }
 
-  function addTag(tag: Tag){
+  function addTag(tag: Tag) {
     setTags(prev => [...prev, tag])
   }
 
   return (
     <Container className="my-4">
       <Routes>
-        <Route path="/" element={<NotesList availableTags={tags} notes={noteWithTag}/>} />
-        <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags}/>} />
+        <Route path="/" element={
+          <NotesList
+            availableTags={tags}
+            notes={noteWithTag}
+          />}
+        />
+        <Route path="/new" element={
+          <NewNote
+            onSubmit={onCreateNote}
+            onAddTag={addTag}
+            availableTags={tags}
+          />}
+        />
         <Route path="*" element={<Navigate to="/" />} /> {/* route that does not exist */}
-        <Route path="/:id">
+        <Route path="/:id" element={<NoteLayout notes={noteWithTag} />}>
           <Route index element={<h1>Show</h1>} />
           <Route path="edit" element={<h1>Edit</h1>} />
         </Route>
