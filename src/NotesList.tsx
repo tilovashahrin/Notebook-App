@@ -29,10 +29,10 @@ export function NotesList({ availableTags, notes }: NotesListProps) {
     }, [title, selectedTags, notes])
     return <>
         <Row className="align-items-center mb-4">
-            <Col>
+            <Col className="d-flex justify-content-start">
                 <h1>Notes</h1>
             </Col>
-            <Col xs="auto">
+            <Col className="d-flex justify-content-end">
                 <Stack gap={2} direction="horizontal">
                     <Link to="/new">
                         <Button variant="primary">Create</Button>

@@ -77,7 +77,7 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/" />} /> {/* route that does not exist */}
         <Route path="/:id" element={<NoteLayout notes={noteWithTag} />}>
-          <Route index element={<Note/>} />
+          <Route index element={<Note />} />
           <Route path="edit" element={<h1>Edit</h1>} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
