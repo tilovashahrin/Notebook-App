@@ -1,9 +1,10 @@
-import { Badge, Button, Card, Col, Form, Row, Stack } from "react-bootstrap"
+import { Badge, Button, Card, Col, Form, Modal, Row, Stack } from "react-bootstrap"
 import { Note, NoteData, Tag } from "./App"
 import { Link } from "react-router-dom"
 import ReactSelectCreatable from "react-select/creatable"
 import { useMemo, useState } from "react"
 import styles from "./NotesList.module.css"
+import { EditNote } from "./EditNote"
 
 type NotesListProps = {
     availableTags: Tag[]
@@ -88,6 +89,7 @@ export function NotesList({ availableTags, notes }: NotesListProps) {
                 </Col>
             ))}
         </Row>
+        <EditTagsModal availableTags={[]} notes={[]} />
     </>
 }
 
@@ -117,4 +119,28 @@ export function NoteCard({ id, title, tags }: NoteCardProps) {
             </Card.Body>
         </Card>
     )
+}
+
+export function EditTagsModal({ availableTags }: NotesListProps) {
+    return <Modal>
+        <Modal.Header closeButton>
+            <Modal.Title>Edit Tags</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <Form>
+                <Stack gap={2}>
+                    {availableTags.map(tag => (
+                        <Row key={tag.id}>
+                            <Col></Col>
+                            <Col xs="auto">
+                                <Button variant="outline-danger">
+                                    &times;
+                                </Button>
+                            </Col>
+                        </Row>
+                    ))}
+                </Stack>
+            </Form>
+        </Modal.Body>
+    </Modal>
 }
