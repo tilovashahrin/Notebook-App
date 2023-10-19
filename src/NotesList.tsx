@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Col, Form, Modal, Row, Stack } from "react-bootstrap"
+import { Badge, Button, Card, Col, Fade, Form, Modal, Row, Stack } from "react-bootstrap"
 import { Note, NoteData, Tag } from "./App"
 import { Link } from "react-router-dom"
 import ReactSelectCreatable from "react-select/creatable"
@@ -17,9 +17,16 @@ type NoteCardProps = {
     tags: Tag[]
 }
 
+type EditTagsModalProps = {
+    availableTags: Tag[]
+    show: boolean
+    handleClose: () => void
+}
+
 export function NotesList({ availableTags, notes }: NotesListProps) {
     const [selectedTags, setSelectedTags] = useState<Tag[]>([])
     const [title, setTitle] = useState("")
+    const [editTagsModalOpen, setEditTagsModalOpen] = useState(false)
     const filteredNotes = useMemo(() => {
         return notes.filter(note => {
             return (title === "" || note.title.toLowerCase().includes(title.toLocaleLowerCase())) &&
@@ -38,7 +45,8 @@ export function NotesList({ availableTags, notes }: NotesListProps) {
                     <Link to="/new">
                         <Button variant="primary">Create</Button>
                     </Link>
-                    <Button variant="outline-secondary">Edit Tags</Button>
+                    <Button onClick={() => setEditTagsModalOpen(true)} variant="outline-secondary">Edit Tags</Button>
+                    
                 </Stack>
             </Col>
         </Row>
@@ -89,7 +97,7 @@ export function NotesList({ availableTags, notes }: NotesListProps) {
                 </Col>
             ))}
         </Row>
-        <EditTagsModal availableTags={[]} notes={[]} />
+        <EditTagsModal availableTags={availableTags} show={editTagsModalOpen} handleClose={() => setEditTagsModalOpen(false)}/>
     </>
 }
 
@@ -121,8 +129,8 @@ export function NoteCard({ id, title, tags }: NoteCardProps) {
     )
 }
 
-export function EditTagsModal({ availableTags }: NotesListProps) {
-    return <Modal>
+export function EditTagsModal({ availableTags, show, handleClose }: EditTagsModalProps) {
+    return <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
             <Modal.Title>Edit Tags</Modal.Title>
         </Modal.Header>
@@ -131,7 +139,9 @@ export function EditTagsModal({ availableTags }: NotesListProps) {
                 <Stack gap={2}>
                     {availableTags.map(tag => (
                         <Row key={tag.id}>
-                            <Col></Col>
+                            <Col>
+                            <Form.Control type="text" value={tag.label}/>
+                            </Col>
                             <Col xs="auto">
                                 <Button variant="outline-danger">
                                     &times;
