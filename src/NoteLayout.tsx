@@ -6,15 +6,15 @@ type NoteLayoutProps = {
 
 }
 
-export function NoteLayout({notes}: NoteLayoutProps) {
-    const {id} = useParams() //custom hook from react router
+export function NoteLayout({ notes }: NoteLayoutProps) {
+    const { id } = useParams() //custom hook from react router
     const note = notes.find(n => n.id === id)
 
-    if (note == null) return <Navigate to={"/"} replace/>
+    if (note == null) return <Navigate to={"/"} replace />
 
-    return <Outlet context={note}/>
+    return <Outlet context={note} />
 }
 
-export function useNote(){
+export function useNote() {
     return useOutletContext<Note>()
 }
