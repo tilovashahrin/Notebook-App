@@ -1,7 +1,7 @@
-Overview
+**Overview**
 This project is a feature-rich note-taking application developed with Typescript, React, and Vue. The primary goal is to provide users with a seamless and responsive note-taking experience, enhanced by a dynamic category system, robust authentication features, real-time collaboration capabilities, and optimal performance.
 
-Key Features
+**Key Features**
 1. Dynamic Category System
 Implemented a dynamic category system to organize notes effectively, offering users an intuitive and accessible way to manage their information.
 2. Authentication and Authorization
@@ -15,13 +15,13 @@ Optimized the application for performance, ensuring smooth and efficient note-ta
 6. Continuous Learning and Industry Best Practices
 Stayed updated on the latest industry trends and technologies, incorporating best practices for frontend development into the project to ensure the application's relevance and competitiveness.
 
-Getting Started
+**Getting Started**
 To run the application locally, follow these steps:
 Clone the repository.
 Install dependencies using npm install.
 Start the development server with npm run dev.
 
-Contributing
+**Contributing**
 I welcome contributions! If you have suggestions for improvement or would like to report issues, please open a new issue or submit a pull request.
 
 
