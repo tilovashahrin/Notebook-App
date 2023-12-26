@@ -90,7 +90,7 @@ export function NotesList({ availableTags, notes, onUpdateTag, onDeleteTag }: No
                 </Col>
             </Row>
         </Form>
-        <Row xs={1} sm={2} lg={3} xl={4} className="g-3">
+        <Row className="g-3">
             {filteredNotes.map(note => (
                 <Col key={note.id}>
                     <NoteCard
