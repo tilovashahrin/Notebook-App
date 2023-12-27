@@ -5,14 +5,23 @@ This project is a feature-rich note-taking application developed with Typescript
 **Key Features**
 
 1. Dynamic Category System
+   
 Implemented a dynamic category system to organize notes effectively, offering users an intuitive and accessible way to manage their information.
-2. Frontend Development with React
+
+3. Frontend Development with React
+   
 Leveraged React for frontend components, utilizing its component-based architecture to create a modular and maintainable codebase.
-3. Typescript Integration
+
+5. Typescript Integration
+
 Employed Typescript to enhance code quality, providing static typing for a more robust and scalable application.
-4. Performance Optimization
+
+7. Performance Optimization
+
 Optimized the application for performance, ensuring smooth and efficient note-taking even with large datasets, providing a seamless user experience.
-5. Continuous Learning and Industry Best Practices
+
+9. Continuous Learning and Industry Best Practices
+
 Stayed updated on the latest industry trends and technologies, incorporating best practices for frontend development into the project to ensure the application's relevance and competitiveness.
 
 **Getting Started**
